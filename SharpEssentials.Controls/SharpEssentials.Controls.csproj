@@ -189,12 +189,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharpEssentials\SharpEssentials.csproj">
-      <Project>{573d5f8c-4c19-42c3-b84b-bc585008b505}</Project>
-      <Name>SharpEssentials</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
