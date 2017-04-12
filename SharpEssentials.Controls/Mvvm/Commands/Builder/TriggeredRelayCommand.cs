@@ -1,4 +1,4 @@
-﻿// Sharp Essentials
+﻿// Sharp Essentials Controls
 // Copyright 2017 Matthew Hamilton - matthamilton@live.com
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,35 +18,35 @@ using System.Windows.Input;
 
 namespace SharpEssentials.Controls.Mvvm.Commands.Builder
 {
-	/// <summary>
-	/// Relay command whose ability to execute can be externally triggered.
-	/// </summary>
-	internal class TriggeredRelayCommand<T> : RelayCommand<T>, ITriggerableCommand
+    /// <summary>
+    /// Relay command whose ability to execute can be externally triggered.
+    /// </summary>
+    internal class TriggeredRelayCommand<T> : RelayCommand<T>, ITriggerableCommand
     {
         /// <summary>
         /// Initializes a new <see cref="TriggeredRelayCommand{T}"/>.
         /// </summary>
         /// <param name="execute">The operation to execute.</param>
         /// <param name="canExecute">Determines whether a command can execute.</param>
-	    public TriggeredRelayCommand(Action<T> execute, Predicate<T> canExecute) 
+        public TriggeredRelayCommand(Action<T> execute, Predicate<T> canExecute) 
             : base(execute, canExecute)
-	    {
-	    }
-
-	    /// <summary>
-		/// Raises the <see cref="ICommand.CanExecuteChanged"/> event.
-		/// </summary>
-		public void RaiseCanExecuteChanged()
-		{
-            OnCanExecuteChanged();
-		}
-
-	    /// <see cref="ICommand.CanExecuteChanged"/>
-	    public override event EventHandler CanExecuteChanged;
+        {
+        }
 
         /// <summary>
-		/// Raises the <see cref="ICommand.CanExecuteChanged"/> event.
-		/// </summary>
+        /// Raises the <see cref="ICommand.CanExecuteChanged"/> event.
+        /// </summary>
+        public void RaiseCanExecuteChanged()
+        {
+            OnCanExecuteChanged();
+        }
+
+        /// <see cref="ICommand.CanExecuteChanged"/>
+        public override event EventHandler CanExecuteChanged;
+
+        /// <summary>
+        /// Raises the <see cref="ICommand.CanExecuteChanged"/> event.
+        /// </summary>
         protected override void OnCanExecuteChanged()
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);

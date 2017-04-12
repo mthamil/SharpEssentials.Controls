@@ -1,4 +1,4 @@
-// Sharp Essentials
+// Sharp Essentials Controls
 // Copyright 2017 Matthew Hamilton - matthamilton@live.com
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,28 +19,28 @@ using System.Windows.Data;
 
 namespace SharpEssentials.Controls.Converters
 {
-	/// <summary>
-	/// Converts between a string representing a quantity of seconds and a TimeSpan.
-	/// </summary>
-	[ValueConversion(typeof(TimeSpan?), typeof(string))]
-	public class SecondsToTimeSpanConverter : IValueConverter
-	{
-		#region Implementation of IValueConverter
+    /// <summary>
+    /// Converts between a string representing a quantity of seconds and a TimeSpan.
+    /// </summary>
+    [ValueConversion(typeof(TimeSpan?), typeof(string))]
+    public class SecondsToTimeSpanConverter : IValueConverter
+    {
+        #region Implementation of IValueConverter
 
-		/// <see cref="IValueConverter.Convert"/>
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-		    return ((TimeSpan?)value)?.TotalSeconds.ToString(culture) ?? string.Empty;
-		}
+        /// <see cref="IValueConverter.Convert"/>
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((TimeSpan?)value)?.TotalSeconds.ToString(culture) ?? string.Empty;
+        }
 
-		/// <see cref="IValueConverter.ConvertBack"/>
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-		    return Int32.TryParse((string)value, out int seconds) 
+        /// <see cref="IValueConverter.ConvertBack"/>
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return Int32.TryParse((string)value, out int seconds) 
                 ? (object)TimeSpan.FromSeconds(seconds) 
                 : null;
-		}
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

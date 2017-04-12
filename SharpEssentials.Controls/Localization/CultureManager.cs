@@ -1,4 +1,4 @@
-﻿// Sharp Essentials
+﻿// Sharp Essentials Controls
 // Copyright 2017 Matthew Hamilton - matthamilton@live.com
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ using System.Windows;
 
 namespace SharpEssentials.Controls.Localization
 {
-	/// <summary>
+    /// <summary>
     /// Provides the ability to change the UICulture for WPF Windows and controls
     /// dynamically.  
     /// </summary>
@@ -29,23 +29,23 @@ namespace SharpEssentials.Controls.Localization
     /// updated when the <see cref="CultureManager.UICulture"/> property is changed.
     /// </remarks>
     public class CultureManager : ICultureManager
-	{
-		/// <summary>
-		/// The default culture manager instance.
-		/// </summary>
-		public static ICultureManager Default => DefaultInstance;
+    {
+        /// <summary>
+        /// The default culture manager instance.
+        /// </summary>
+        public static ICultureManager Default => DefaultInstance;
 
-	    /// <summary>
+        /// <summary>
         /// Sets the UICulture for a <see cref="CultureManager"/> and raises the <see cref="UICultureChanged"/>
         /// event causing any XAML elements using the <see cref="LocalizeExtension"/> to automatically
         /// update.
         /// </summary>
         public CultureInfo UICulture
         {
-	        get
-	        {
-	            return _uiCulture ?? (_uiCulture = Thread.CurrentThread.CurrentUICulture);
-	        }
+            get
+            {
+                return _uiCulture ?? (_uiCulture = Thread.CurrentThread.CurrentUICulture);
+            }
             set
             {
                 if (value != UICulture)
@@ -62,19 +62,19 @@ namespace SharpEssentials.Controls.Localization
             }
         }
 
-		/// <summary>
-		/// Raised when the <see cref="UICulture"/> is changed.
-		/// </summary>
-		/// <remarks>
-		/// It is advisable to use a <see cref="WeakEventManager"/> to subscribe to this event since a <see cref="CultureManager"/>
-		/// will often far outlive its multitude of listeners.
-		/// </remarks>
-		public event EventHandler<EventArgs> UICultureChanged;
+        /// <summary>
+        /// Raised when the <see cref="UICulture"/> is changed.
+        /// </summary>
+        /// <remarks>
+        /// It is advisable to use a <see cref="WeakEventManager"/> to subscribe to this event since a <see cref="CultureManager"/>
+        /// will often far outlive its multitude of listeners.
+        /// </remarks>
+        public event EventHandler<EventArgs> UICultureChanged;
 
-		private void OnUICultureChanged()
-		{
+        private void OnUICultureChanged()
+        {
             UICultureChanged?.Invoke(this, EventArgs.Empty);
-		}
+        }
 
         /// <summary>
         /// If set to true then the <see cref="Thread.CurrentCulture"/> property is changed
@@ -100,12 +100,12 @@ namespace SharpEssentials.Controls.Localization
         /// <remarks>If the culture is neutral then a specific culture is created.</remarks>
         private void UpdateThreadCulture(CultureInfo value)
         {
-	        Thread.CurrentThread.CurrentCulture = value.IsNeutralCulture
-				? CultureInfo.CreateSpecificCulture(value.Name) 
-				: value;
+            Thread.CurrentThread.CurrentCulture = value.IsNeutralCulture
+                ? CultureInfo.CreateSpecificCulture(value.Name) 
+                : value;
         }
 
-	    /// <summary>
+        /// <summary>
         /// The current UICulture of the manager.
         /// </summary>
         private CultureInfo _uiCulture;
@@ -116,6 +116,6 @@ namespace SharpEssentials.Controls.Localization
         /// </summary>
         private bool _keepThreadCurrentCultureInSync = true;
 
-		private static readonly CultureManager DefaultInstance = new CultureManager();
+        private static readonly CultureManager DefaultInstance = new CultureManager();
     }
 }
