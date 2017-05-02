@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Moq;
 using SharpEssentials.Controls.MultiKey;
 using Xunit;
-using Xunit.Extensions;
 
 namespace SharpEssentials.Tests.Unit.SharpEssentials.Controls.MultiKey
 {

@@ -3,7 +3,6 @@ using System.Globalization;
 using SharpEssentials.Controls.Converters;
 using SharpEssentials.Testing;
 using Xunit;
-using Xunit.Extensions;
 
 namespace SharpEssentials.Tests.Unit.SharpEssentials.Controls.Converters
 {

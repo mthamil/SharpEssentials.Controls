@@ -2,7 +2,6 @@
 using System.Windows;
 using SharpEssentials.Controls.Converters;
 using Xunit;
-using Xunit.Extensions;
 
 namespace SharpEssentials.Tests.Unit.SharpEssentials.Controls.Converters
 {
